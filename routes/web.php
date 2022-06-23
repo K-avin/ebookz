@@ -14,9 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.app');
 });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/add-book', [App\Http\Controllers\BooksController::class, 'viewAddBooksForm'])->name('addBooks');
+Route::post('/store-book', [App\Http\Controllers\BooksController::class, 'addBooks'])->name('save-book');
+// ->middleware('auth');
